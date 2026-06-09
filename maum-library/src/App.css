@@ -1,0 +1,863 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*-----------*/
+:root {
+  --ridi-blue: #1f8bff;
+  --ridi-hover-blue: #0066d6;
+  --bg-gray: #f7f9fa;
+  --text-dark: #333333;
+  --text-muted: #738096;
+  --border-color: #e6e8eb;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #ffffff;
+  color: var(--text-dark);
+}
+
+.app-header {
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 100;
+}
+
+/* 헤더 레이아웃: 로고(고정) + 검색바(고정폭) + 탭(남은 공간, 줄바꿈 방지) */
+.header-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 0;
+}
+
+.header-left {
+  flex-shrink: 0;
+  margin-right: 16px;
+}
+
+.header-center {
+  flex: 0 0 280px;
+  margin-right: 16px;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden; /* 탭이 넘칠 경우 대비 */
+}
+
+/* 탭 네비게이션 - 절대 줄바꿈 안 됨 */
+.header-right nav,
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap !important;
+  white-space: nowrap;
+  gap: 2px;
+}
+
+.nav-links a,
+.nav-links button {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--ridi-blue);
+  text-decoration: none;
+}
+
+.header-search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* 검색바 너비 조금 더 넓게 */
+}
+
+/* 심플해진 돋보기 아이콘 스타일 */
+.header-search-bar .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #a0aec0;
+  pointer-events: none;
+}
+
+.header-search-bar input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 16px 10px 40px;
+  font-size: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px; /* 두번째 사진처럼 약간만 둥글게 */
+  background-color: #f8fafc;
+  color: #333;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.header-search-bar input:focus {
+  border-color: var(--ridi-blue);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(31, 139, 255, 0.1);
+}
+
+.header-search-bar input::placeholder {
+  color: #cbd5e0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #404040;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.nav-links a:hover {
+  color: var(--ridi-blue);
+}
+
+.app-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+
+.search-results-wrapper {
+  background-color: #f8fafc;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  border: 1px solid #edf2f7;
+}
+
+.search-result-heading {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  color: #4a5568;
+}
+
+.search-divider {
+  border: 0;
+  height: 1px;
+  background: #e2e8f0;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+/* ✨ 강조된 메인 감정 배너 디자인 ✨ */
+.main-banner {
+  background-color: #f0f7ff; /* 산뜻하고 연한 파란색 배경 */
+  border: 2px solid #cce0ff; /* 뚜렷한 아웃라인 */
+  border-radius: 16px; /* 둥근 모서리 */
+  color: var(--text-dark);
+  padding: 50px 20px;
+  text-align: center;
+  margin-bottom: 50px;
+  box-shadow: 0 4px 20px rgba(31, 139, 255, 0.08); /* 은은한 그림자 */
+}
+
+.main-banner h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ridi-blue); /* 텍스트 강조 */
+  margin-top: 0;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.main-banner p {
+  font-size: 15px;
+  color: #4a5568;
+  margin: 0 0 30px 0;
+}
+
+.emotion-btn-container {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.emotion-pulse-btn {
+  background: #fff;
+  color: var(--ridi-blue);
+  border: 1px solid var(--ridi-blue);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 6px rgba(31, 139, 255, 0.1);
+}
+
+.emotion-pulse-btn:hover {
+  transform: translateY(-3px);
+  background: var(--ridi-blue);
+  color: #fff;
+  box-shadow: 0 6px 15px rgba(31, 139, 255, 0.25);
+}
+
+/* 아래는 기존 카드 스타일 등 유지 */
+.emotion-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background: #fff;
+  color: #555;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.tab-btn.active {
+  background-color: var(--ridi-blue);
+  color: #fff;
+  border-color: var(--ridi-blue);
+}
+
+.section-wrapper {
+  margin-bottom: 50px;
+}
+
+.section-title-link {
+  font-size: 22px;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-title-link:hover {
+  color: var(--ridi-blue);
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+.book-card-container {
+  position: relative;
+}
+
+.book-card {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.book-cover {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--text-muted);
+  font-size: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.book-info {
+  padding: 14px;
+}
+
+.book-title {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 0 6px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-author {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 8px 0;
+}
+
+.book-tags {
+  font-size: 12px;
+  color: var(--ridi-blue);
+  font-weight: 500;
+}
+
+.rank-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #333;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.bookmark-icon-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--border-color);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  transition: all 0.2s ease;
+}
+
+.bookmark-icon-btn.active {
+  color: #ff3b30;
+  background: #fff;
+}
+
+.detail-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.back-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.detail-main-info {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.detail-cover {
+  width: 240px;
+  height: 340px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #aaa;
+}
+
+.detail-text-side {
+  flex-grow: 1;
+  padding-top: 10px;
+}
+
+.detail-emotion-tag {
+  color: var(--ridi-blue);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.detail-title {
+  font-size: 32px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.detail-author-pub {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.detail-bookmark-btn {
+  background: #fff;
+  color: var(--ridi-blue);
+  border: 1px solid var(--ridi-blue);
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.detail-bookmark-btn.active {
+  background: var(--ridi-blue);
+  color: #fff;
+}
+
+.detail-story-section {
+  border-top: 1px solid var(--border-color);
+  padding: 30px 0;
+}
+
+.detail-story-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.detail-story-section p {
+  color: #444;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.detail-similar-section {
+  border-top: 1px solid var(--border-color);
+  padding-top: 30px;
+  margin-top: 20px;
+}
+
+.user-profile-card {
+  background-color: var(--bg-gray);
+  border: 1px solid var(--border-color);
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.sub-section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.empty-box {
+  border: 1px dashed #ccc;
+  padding: 40px;
+  text-align: center;
+  color: #999;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.no-data {
+  text-align: center;
+  padding: 50px 0;
+  color: #999;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 40px 0;
+  color: #999;
+  font-size: 13px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-gray);
+  margin-top: 80px;
+}
+/* 헤더 우측 - 중복 정의 제거됨 (위에서 통합 관리) */
+
+/* --- 검색바 및 첫번째 사진 드롭다운 --- */
+.header-search-container {
+  position: relative;
+  width: 260px;
+}
+
+.header-search-bar {
+  position: relative;
+  width: 100%;
+}
+
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 120%; /* 검색바보다 조금 더 넓게 */
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.dropdown-header {
+  padding: 12px 16px;
+  font-weight: bold;
+  font-size: 14px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dropdown-list {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  display: flex;
+  padding: 12px 16px;
+  gap: 12px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.dropdown-item:hover {
+  background: #f4f8ff;
+}
+
+.dropdown-cover {
+  width: 40px;
+  height: 56px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #888;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.dropdown-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dropdown-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.dropdown-author {
+  font-size: 12px;
+  color: #666;
+}
+
+.dropdown-empty {
+  padding: 20px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+/* --- 두번째 사진: 검색 결과 페이지 리스트 --- */
+.search-query-text {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.search-list-container {
+  border-top: 2px solid #333;
+}
+
+.search-list-item {
+  display: flex;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--border-color);
+  gap: 24px;
+  position: relative;
+}
+
+.search-list-cover {
+  width: 120px;
+  height: 170px;
+  background: #eee;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #999;
+  border-radius: 4px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.search-list-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-list-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.search-list-title:hover {
+  color: var(--ridi-blue);
+}
+
+.search-list-author-genre {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.search-list-desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.search-list-tags {
+  font-size: 13px;
+  color: var(--ridi-blue);
+}
+
+.search-list-bookmark {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.search-list-bookmark.active {
+  color: #ff3b30;
+}
+
+/* --- 세번째 사진: 마이페이지 심플 UI --- */
+.mypage-greeting-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.mypage-greeting-card h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.mypage-greeting-card p {
+  margin: 0;
+  color: #666;
+  font-size: 15px;
+}
+
+.mypage-section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.mypage-empty-dashed {
+  border: 1px dashed #cbd5e0;
+  border-radius: 8px;
+  padding: 50px 20px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+/* --- 네번째 사진: 메인페이지 장르 탭 --- */
+.main-genre-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.main-genre-tab {
+  padding: 10px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.main-genre-tab:hover {
+  border-color: var(--ridi-blue);
+}
+
+.main-genre-tab.active {
+  background-color: var(--ridi-blue);
+  color: #fff;
+  border-color: var(--ridi-blue);
+}
+Link {
+  list-style: none;
+}
+/* --- Swiper 화살표 배경 원 제거 및 스타일링 --- */
+.swiper-button-next,
+.swiper-button-prev {
+  background: none !important; /* 배경 원 제거 */
+  box-shadow: none !important; /* 그림자 제거 */
+  color: var(--ridi-blue) !important; /* 화살표 색상 */
+  width: 30px !important;
+  height: 30px !important;
+  transition: opacity 0.2s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  opacity: 0.6;
+}
+
+/* 화살표 크기 미세 조정 */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 24px !important; 
+  font-weight: bold;
+}
+
+/* 슬라이더가 양옆 화살표와 겹치지 않게 여백 조정 */
+.section-wrapper .swiper {
+  padding: 10px 40px !important;
+  overflow: visible !important; /* 카드 그림자 잘림 방지 */
+}
+
+/* 화살표 위치를 슬라이더 바깥쪽으로 살짝 이동 */
+.swiper-button-prev {
+  left: -10px !important;
+}
+.swiper-button-next {
+  right: -10px !important;
+}
+
+/* 기존 장르 탭 스타일 유지 */
+.main-genre-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-left: 40px;
+}
+
+.main-genre-tab {
+  padding: 10px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.main-genre-tab.active {
+  background-color: var(--ridi-blue);
+  color: #fff;
+  border-color: var(--ridi-blue);
+}
+/* 슬라이더 영역 밖으로 나가는 카드들은 완전히 숨김 */
+.section-wrapper {
+  overflow: hidden; 
+  position: relative;
+  margin-bottom: 40px;
+}
+
+/* 대신 화살표 버튼이 숨겨지지 않도록 여백 및 위치 재조정 */
+.section-wrapper .swiper {
+  padding: 10px 40px !important;
+  overflow: hidden !important; /* 슬라이더 자체 박스 밖을 숨김 */
+}
+
+.swiper-button-prev {
+  left: 5px !important; /* 살짝 안쪽으로 이동시켜 hidden 영역 안으로 배치 */
+}
+.swiper-button-next {
+  right: 5px !important; /* 살짝 안쪽으로 이동시켜 hidden 영역 안으로 배치 */
+}
